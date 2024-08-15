@@ -15,11 +15,12 @@
     </div>
 
     <div class="email">
-        <div class="avatar" [ngStyle]="{'background-color': getAvatarColor(articleDetails.userEmail)}">
-            {{ articleDetails.userEmail.charAt(0).toUpperCase() }}
-          </div>
-        {{articleDetails?.userEmail}}
-    </div>
+        <app-avatar
+          [initials]="articleDetails.userEmail.charAt(0).toUpperCase()"
+          [backgroundColor]="getAvatarColor(articleDetails.userEmail)">
+        </app-avatar>
+        {{ articleDetails?.userEmail }}
+      </div>
     <div [innerHTML]="articleDetails.content | sanitizeHtml"></div>
         <!-- Like button section -->
         <div class="like-section">
@@ -42,9 +43,10 @@
         <mat-divider></mat-divider>
         <div *ngFor="let comment of comments">
             <div class="email">
-            <div class="avatar" [ngStyle]="{'background-color': getAvatarColor(comment.user_name)}">
-                {{ comment.user_name.charAt(0).toUpperCase() }}
-              </div>
+                <app-avatar
+                [initials]="comment.user_name.charAt(0).toUpperCase()"
+                [backgroundColor]="getAvatarColor(comment.user_name)">
+              </app-avatar>
             <p><strong>{{comment.user_name}}</strong> [{{comment.comment_date | date:'dd MMM, yyyy'}}]</p>
         </div>
             <p>{{comment.comment_text}}</p>

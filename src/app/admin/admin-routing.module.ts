@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RouterGuardService } from '../services/router-guard.service';
-import { HelpDetailsComponent } from './help-details/help-details.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { CategoryComponent } from './dialog/category/category.component';
 import { ManageCategoryComponent } from './manage-category/manage-category.component';
@@ -48,14 +47,6 @@ const routes: Routes = [{
     {
       path: 'article',
       component: ManageArticleComponent,
-      canActivate: [RouterGuardService],
-      data: {
-        expectedRole: ['admin', 'user']
-      }
-    },
-    {
-      path: 'help',
-      component: HelpDetailsComponent,
       canActivate: [RouterGuardService],
       data: {
         expectedRole: ['admin', 'user']
