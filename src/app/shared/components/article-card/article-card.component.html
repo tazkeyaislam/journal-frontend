@@ -1,0 +1,28 @@
+<mat-card class="card" (click)="onCardClick()">
+    <div class="card-content">
+      <div class="card-email">
+        <app-avatar [initials]="getInitials()" [backgroundColor]="avatarColor"></app-avatar>
+        {{ userEmail }}
+      </div>
+      <div class="card-category">
+        {{ categoryName }}
+      </div>
+      <div class="card-title">
+        {{ title }}
+      </div>
+      <div class="card-date">
+        {{ publicationDate | date: 'dd MMM, yyyy' }}
+      </div>
+      <div class="card-stats">
+        <span class="likes">
+          <mat-icon>favorite</mat-icon>
+          {{ likeCount }}
+        </span>
+        <span class="comments">
+          <mat-icon>comment</mat-icon>
+          {{ commentCount }}
+        </span>
+      </div>
+    </div>
+  </mat-card>
+  

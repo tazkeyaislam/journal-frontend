@@ -16,6 +16,7 @@ import { QuillModule } from 'ngx-quill';
 import { SharedModule } from './shared/shared.module';
 import { ArticleDetailsComponent } from './article-details/article-details.component';
 import { SignupComponent } from './signup/signup.component';
+import { ArticleCardComponent } from './shared/components/article-card/article-card.component';
 
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {

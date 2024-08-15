@@ -20,6 +20,8 @@ import { ViewArticleComponent } from './dialog/view-article/view-article.compone
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { ChangePasswordComponent } from './dialog/change-password/change-password.component';
+import { ArticleCardComponent } from '../shared/components/article-card/article-card.component';
+import { AvatarComponent } from '../shared/components/avatar/avatar.component';
 
 
 @NgModule({
