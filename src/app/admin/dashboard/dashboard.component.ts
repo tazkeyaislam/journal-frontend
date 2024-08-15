@@ -20,6 +20,8 @@ export class DashboardComponent {
   searchText: string = ' ';
   categories: any[] = [];
   selectedCategoryId: number | null = null;
+  isLoading: boolean = true;  // Track loading state
+
 
   constructor(
     private articleService: ArticleService,
@@ -46,7 +48,10 @@ export class DashboardComponent {
   tableData() {
     this.articleService.getPublicPublishedArticles().subscribe((response: any) => {
       this.articles = response;
+      console.log('Articles:', this.articles); // Log to check the data
+      this.isLoading = false;  // End loading after data is fetched
     }, (error: any) => {
+      this.isLoading = false;  // End loading after data is fetched
       console.log(error);
       if (error.error?.message) {
         this.responseMessage = error.error?.message;
@@ -60,12 +65,19 @@ export class DashboardComponent {
   }
 
   filteredItem(): any[] {
+    const trimmedSearchText = this.searchText.trim().toLowerCase();
+
+    if (!trimmedSearchText) {
+      return this.articles; // Return all articles if search text is empty or only spaces
+    }
+
     return this.articles.filter((item: { categoryId: number; categoryName: string; title: string }) =>
-      (!this.selectedCategoryId || item.categoryId === this.selectedCategoryId) && // Filter by selected category
-      (item.title.toLowerCase().includes(this.searchText.toLowerCase()) ||
-        item.categoryName.toLowerCase().includes(this.searchText.toLowerCase()))
+      (!this.selectedCategoryId || item.categoryId === this.selectedCategoryId) &&
+      (item.title.toLowerCase().includes(trimmedSearchText) ||
+        item.categoryName.toLowerCase().includes(trimmedSearchText))
     );
   }
+
 
 
   handleViewAction(article: any) {
@@ -87,6 +99,7 @@ export class DashboardComponent {
     const index = this.articles.findIndex(a => a.id === updatedArticle.id);
     if (index !== -1) {
       this.articles[index] = updatedArticle;
+      this.filteredItem();
     }
   }
   fetchCategories() {
@@ -106,6 +119,8 @@ export class DashboardComponent {
 
   filterByCategory(categoryId: number | null) {
     this.selectedCategoryId = categoryId;
+    this.filteredItem();
+
   }
 
   getAvatarColor(email: string): string {

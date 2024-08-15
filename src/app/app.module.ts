@@ -12,7 +12,6 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { AdminModule } from './admin/admin.module';
 import { TokenInterceptor } from './services/token.interceptor';
-import { QuillModule } from 'ngx-quill';
 import { SharedModule } from './shared/shared.module';
 import { ArticleDetailsComponent } from './article-details/article-details.component';
 import { SignupComponent } from './signup/signup.component';
@@ -50,7 +49,6 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     MaterialModule,
     HttpClientModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
-    QuillModule.forRoot(),
     SharedModule
   ],
   providers: [HttpClientModule, { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }],

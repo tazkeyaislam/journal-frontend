@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SanitizeHtmlPipe } from '../pipe/sanitize-html.pipe';
 import { MenuItems } from './menu-items';
 import { ArticleCardComponent } from './components/article-card/article-card.component';
 import { AvatarComponent } from './components/avatar/avatar.component';
@@ -18,7 +17,6 @@ import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
-    SanitizeHtmlPipe,
     ArticleCardComponent,
     AvatarComponent,
     AuthFormComponent],
@@ -33,7 +31,6 @@ import { MatInputModule } from '@angular/material/input';
     MatIconModule
   ],
   exports: [
-    SanitizeHtmlPipe,
     ArticleCardComponent,
     AvatarComponent,
     AuthFormComponent,

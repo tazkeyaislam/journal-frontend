@@ -21,7 +21,7 @@
         </app-avatar>
         {{ articleDetails?.userEmail }}
       </div>
-    <div [innerHTML]="articleDetails.content | sanitizeHtml"></div>
+      {{ articleDetails.content }}
         <!-- Like button section -->
         <div class="like-section">
             <button mat-icon-button (click)="toggleLike()">

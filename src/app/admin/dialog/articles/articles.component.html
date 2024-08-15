@@ -17,14 +17,13 @@
                 </mat-form-field>
             </div>
             <div fxLayout="row wrap">
-                <div fxFlex styles="margin:10px">
-                    <quill-editor [styles]="{height:'300px'}" theme="snow" 
-                    [placeholder]=" 'Article content...'" 
-                    matInput formControlName="content"></quill-editor>
+                <mat-form-field appearance="fill" fxFlex>
+                    <mat-label>Article Content</mat-label>
+                    <textarea matInput formControlName="content" rows="10" placeholder="Enter article content..." required></textarea>
                     <mat-error *ngIf="articleForm.controls.content.touched && articleForm.controls.content.invalid">
-                        <span *ngIf="articleForm.controls.content.errors.required">This field is required.</span>
+                      <span *ngIf="articleForm.controls.content.errors.required">This field is required.</span>
                     </mat-error>
-                </div>
+                  </mat-form-field>
             </div>
             <div fxLayout="row wrap">
                 <mat-form-field appearance="fill" fxFlex>

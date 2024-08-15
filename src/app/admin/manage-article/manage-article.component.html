@@ -1,11 +1,11 @@
 <mat-card class="article-card">
     <div class="header">
       <span class="title">Manage Articles</span>
-      <!-- Only non-admins can add articles -->
       <button
         mat-raised-button
         (click)="addArticle()"
         class="add-article-button"
+        *ngIf="!isAdmin"
       >
         Add Article
       </button>

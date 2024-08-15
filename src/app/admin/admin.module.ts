@@ -11,7 +11,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ManageCategoryComponent } from './manage-category/manage-category.component';
 import { CategoryComponent } from './dialog/category/category.component';
-import { QuillModule } from 'ngx-quill';
 import { SharedModule } from '../shared/shared.module';
 import { ManageArticleComponent } from './manage-article/manage-article.component';
 import { ArticlesComponent } from './dialog/articles/articles.component';
@@ -43,7 +42,6 @@ import { ChangePasswordComponent } from './dialog/change-password/change-passwor
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    QuillModule.forRoot(),
     SharedModule
   ]
 })
