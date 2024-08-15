@@ -1,0 +1,50 @@
+<div class="login-container">
+  <div class="login-left">
+    <h1>{{ title }}</h1>
+    <p>{{ description }}</p>
+  </div>
+  <div class="login-right">
+    <form [formGroup]="formGroup" (ngSubmit)="handleSubmit()">
+      <div fxFlex fxLayout="column">
+        <!-- Iterate over fields to generate form inputs -->
+        <mat-form-field *ngFor="let field of fields" appearance="outline" fxFlex>
+          <mat-label>{{ field.label }}</mat-label>
+          <input 
+            matInput 
+            [type]="field.type" 
+            [formControlName]="field.formControlName" 
+            required 
+          />
+          <mat-error *ngIf="formGroup.controls[field.formControlName].touched && formGroup.controls[field.formControlName].invalid">
+            <ng-container *ngFor="let error of field.errorMessages | keyvalue">
+              <span *ngIf="formGroup.controls[field.formControlName].hasError(error.key)">
+                {{ error.value }}
+              </span>
+            </ng-container>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Submit button -->
+        <button 
+          mat-raised-button 
+          color="primary" 
+          [disabled]="!(formGroup.valid && formGroup.dirty)" 
+          type="submit">
+          {{ submitButtonText }}
+        </button>
+
+        <!-- Link to alternate route -->
+        <span>
+          {{ alternateRoute.text }}
+          <button 
+            mat-icon-button 
+            [routerLink]="[alternateRoute.route]" 
+            class="link-button" 
+            [attr.aria-label]="alternateRoute.buttonText">
+            {{ alternateRoute.buttonText }}
+          </button>
+        </span>
+      </div>
+    </form>
+  </div>
+</div>

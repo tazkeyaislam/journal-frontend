@@ -1,38 +1,10 @@
-<div class="login-container">
-  <div class="login-left">
-    <h1>Exam Mastery Hub</h1>
-    <p>
-      Unleash Your Academic Success with Exam Mastery Hub's Exam Excellence
-      Platform
-    </p>
-  </div>
-  <div class="login-right">
-    <form [formGroup]="loginForm" (ngSubmit)="handleSubmit()">
-      <div fxFlex fxLayout="column">
-        <mat-form-field appearance="outline" fxFlex>
-          <mat-label>Email</mat-label>
-          <input matInput formControlName="email" required />
-          <mat-error *ngIf="loginForm.controls.email.touched && loginForm.controls.email.invalid">
-            <span *ngIf="loginForm.controls.email.errors.required">This field is required</span>
-            <span *ngIf="loginForm.controls.email.errors.pattern">This field is invalid</span>
-          </mat-error>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline" fxFlex>
-          <mat-label>Password</mat-label>
-          <input matInput type="password" formControlName="password" required />
-          <mat-error *ngIf="loginForm.controls.password.touched && loginForm.controls.password.invalid">
-            <span *ngIf="loginForm.controls.password.errors.required">This field is required</span>
-          </mat-error>
-        </mat-form-field>
-
-        <button mat-raised-button color="primary" [disabled]="!(loginForm.valid && loginForm.dirty)" type="submit">
-          Login
-        </button>
-        <span>Not a member yet? 
-          <button mat-icon-button [routerLink]="['/signup']" class="link-button" aria-label="Login">Sign up</button>
-        </span>
-      </div>
-    </form>
-  </div>
-</div>
+<app-auth-form 
+[title]="'Exam Mastery Hub'" 
+[description]="'Unleash Your Academic Success with Exam Mastery Hubs Exam Excellence Platform'"
+  [formGroup]="loginForm"
+  [fields]="[{ label: 'Email', type: 'text', formControlName: 'email', errorMessages: { required: 'This field is required', pattern: 'This field is invalid' } },
+    { label: 'Password', type: 'password', formControlName: 'password', errorMessages: { required: 'This field is required' } }]"
+  [submitButtonText]="'Login'"
+  [alternateRoute]="{ text: 'Not a member yet?', buttonText: 'Sign up', route: '/signup' }"
+  (formSubmit)="handleSubmit()"
+></app-auth-form>

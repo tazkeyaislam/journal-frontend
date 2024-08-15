@@ -6,6 +6,13 @@ import { ArticleCardComponent } from './components/article-card/article-card.com
 import { AvatarComponent } from './components/avatar/avatar.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { AuthFormComponent } from './components/auth-form/auth-form.component';
+import { MaterialModule } from './material.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 
 
 
@@ -13,15 +20,25 @@ import { MatIconModule } from '@angular/material/icon';
   declarations: [
     SanitizeHtmlPipe,
     ArticleCardComponent,
-    AvatarComponent],
+    AvatarComponent,
+    AuthFormComponent],
   imports: [
     CommonModule,
-    MatCardModule,
+    MaterialModule,
+    ReactiveFormsModule,
+    RouterModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
     MatIconModule
   ],
-  exports: [SanitizeHtmlPipe,
+  exports: [
+    SanitizeHtmlPipe,
     ArticleCardComponent,
-    AvatarComponent],
+    AvatarComponent,
+    AuthFormComponent,
+    MatIconModule
+  ],
   providers: [MenuItems]
 })
 export class SharedModule { }

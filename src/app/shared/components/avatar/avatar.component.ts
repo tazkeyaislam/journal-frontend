@@ -7,7 +7,19 @@ import { Component, Input } from '@angular/core';
     {{ initials }}
   </div>
 `,
-  styleUrls: ['./avatar.component.scss']
+  styles: [`
+  .avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+  }
+`]
 })
 export class AvatarComponent {
   @Input() initials!: string;
