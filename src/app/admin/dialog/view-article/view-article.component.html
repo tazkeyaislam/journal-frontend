@@ -1,21 +1,21 @@
 <mat-toolbar>
-    <mat-toolbar-row fxLayout="row">
-        <span> View Article</span>
-    </mat-toolbar-row>
+    <div class="toolbar-row">
+        <span>View Article</span>
+    </div>
 </mat-toolbar>
 
-<mat-dialog-content>
+<mat-dialog-content class="dialog-content">
     <div>
-        Title: {{article?.title}}
+        Title: {{ article?.title }}
         <br>
-        Category: {{article?.categoryName}}
+        Category: {{ article?.categoryName }}
         <br>
-        Status: {{article?.status}}
+        Status: {{ article?.status }}
     </div>
     <mat-divider></mat-divider>
-     {{article.content}}
+    <div>{{ article?.content }}</div>
 </mat-dialog-content>
 
 <mat-dialog-actions align="center">
     <button mat-raised-button mat-dialog-close>Close</button>
-</mat-dialog-actions> 
+</mat-dialog-actions>

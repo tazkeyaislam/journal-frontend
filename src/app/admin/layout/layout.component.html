@@ -7,8 +7,8 @@
   <app-header></app-header>
 </mat-toolbar>
 
-<div class="admin-layout" fxLayout="row" fxLayoutAlign="start stretch" fxFlexFill>
-  <div fxFlex="20" fxFlex.xs="100" class="sidebar">
+<div class="admin-layout">
+  <div class="sidebar">
     <app-sidebar></app-sidebar>
     <!-- <mat-nav-list>
       <a mat-list-item routerLinkActive="active" routerLink="/articleHub/dashboard">
@@ -34,7 +34,7 @@
       </a>
     </mat-nav-list> -->
   </div>
-  <div fxFlex="80" fxFlex.xs="100" class="main-content">
+  <div class="main-content">
     <router-outlet></router-outlet>
   </div>
 </div>

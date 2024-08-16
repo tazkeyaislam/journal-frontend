@@ -1,0 +1,16 @@
+/* CSS to replace Angular Flex-Layout for the toolbar and form */
+.mat-toolbar-row-custom {
+    display: flex;
+    flex-direction: row;
+    /* 'row' is default and can often be omitted */
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-field-row {
+    display: flex;
+    flex-wrap: wrap;
+}
