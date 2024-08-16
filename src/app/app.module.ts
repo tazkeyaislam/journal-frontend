@@ -10,12 +10,10 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgxUiLoaderConfig, NgxUiLoaderModule, PB_DIRECTION, SPINNER } from 'ngx-ui-loader';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { AdminModule } from './admin/admin.module';
 import { TokenInterceptor } from './services/token.interceptor';
 import { SharedModule } from './shared/shared.module';
 import { ArticleDetailsComponent } from './article-details/article-details.component';
 import { SignupComponent } from './signup/signup.component';
-import { ArticleCardComponent } from './shared/components/article-card/article-card.component';
 
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
