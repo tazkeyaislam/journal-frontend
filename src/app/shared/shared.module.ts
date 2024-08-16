@@ -34,7 +34,6 @@ import { MatInputModule } from '@angular/material/input';
     ArticleCardComponent,
     AvatarComponent,
     AuthFormComponent,
-    MatIconModule
   ],
   providers: [MenuItems]
 })
