@@ -1,0 +1,9 @@
+/* Add this CSS to your styles for similar layout behavior */
+.toolbar-row {
+    display: flex;
+    justify-content: center; /* Center content within the toolbar */
+}
+
+.dialog-content {
+    padding: 16px; /* Add padding for content inside the dialog */
+}
