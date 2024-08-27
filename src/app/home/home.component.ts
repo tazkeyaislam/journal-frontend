@@ -3,7 +3,7 @@ import { ArticleService } from '../services/article.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { GlobalConstants } from '../shared/global-constants';
-import { ArticleDetailsComponent } from '../article-details/article-details.component';
+import { ArticleDetailsComponent } from './article-details/article-details.component';
 import { UserService } from '../services/user.service';
 import { CategoryService } from '../services/category.service';
 
@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
     //if token exists on localstorage
     if (localStorage.getItem('token') != null) {
       this.userService.checkToken().subscribe((response: any) => {
-        this.router.navigate(['/articleHub/dashboard'])
+        this.router.navigate(['/journal/dashboard'])
       }, (error: any) => {
         console.log(error);
       }

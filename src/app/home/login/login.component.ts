@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../services/user.service';
+
 import { NgxUiLoaderService } from 'ngx-ui-loader';
-import { GlobalConstants } from '../shared/global-constants';
+import { UserService } from 'src/app/services/user.service';
+import { GlobalConstants } from 'src/app/shared/global-constants';
 
 @Component({
   selector: 'app-login',
@@ -43,7 +44,7 @@ export class LoginComponent implements OnInit {
         this.ngxService.stop();
         console.log("Login Response:", response);
         localStorage.setItem('token', response.token);
-        this.router.navigate(['/articleHub/dashboard']);
+        this.router.navigate(['/journal/dashboard']);
       },
       (error) => {
         console.log(error);

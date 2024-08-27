@@ -1,6 +1,6 @@
 <mat-nav-list>
     <mat-list-item *ngFor="let menuitem of menuitems.getMenuitem()" routerLinkActive="selected">
-    <a [routerLink]="['/articleHub', menuitem.state]" *ngIf="(menuitem.role === '' || menuitem.role === tokenPayload.role)">
+    <a [routerLink]="['/journal', menuitem.state]" *ngIf="(menuitem.role === '' || menuitem.role === tokenPayload.role)">
         <mat-icon>{{menuitem.icon}}</mat-icon>
         <span>{{menuitem.name}}</span>
     </a>

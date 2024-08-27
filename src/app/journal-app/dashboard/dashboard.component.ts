@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { ArticleDetailsComponent } from 'src/app/article-details/article-details.component';
+import { ArticleDetailsComponent } from 'src/app/home/article-details/article-details.component';
 import { ArticleService } from 'src/app/services/article.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { UserService } from 'src/app/services/user.service';
@@ -37,7 +37,7 @@ export class DashboardComponent {
     //if token exists on localstorage
     if (localStorage.getItem('token') != null) {
       this.userService.checkToken().subscribe((response: any) => {
-        this.router.navigate(['/articleHub/dashboard'])
+        this.router.navigate(['/journal/dashboard'])
       }, (error: any) => {
         console.log(error);
       }

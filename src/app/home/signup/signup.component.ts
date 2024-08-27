@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../services/user.service';
+import { UserService } from '../../services/user.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
-import { GlobalConstants } from '../shared/global-constants';
-import { SnackbarService } from '../services/snackbar.service';
+import { GlobalConstants } from '../../shared/global-constants';
+import { SnackbarService } from '../../services/snackbar.service';
 
 @Component({
   selector: 'app-signup',
