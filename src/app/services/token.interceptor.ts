@@ -33,7 +33,7 @@ export class TokenInterceptor implements HttpInterceptor {
           console.log(err.url);
 
           //if the status code is 401 (Unauthorized) or 403 (Forbidden)
-          if (err.status === 401 || err.status === 403) {
+          if ((err.status === 401 || err.status === 403) && !this.isAuthRequest(err.url)) {
             // if (this.router.url === '/') {
             // }
             // else {
@@ -45,5 +45,10 @@ export class TokenInterceptor implements HttpInterceptor {
         return throwError(err);
       })
     )
+  }
+
+  private isAuthRequest(url: string | null): boolean {
+    // Assuming your login and signup URLs contain 'login' and 'signup' in the path
+    return url?.includes('/login') || url?.includes('/signup') || false;
   }
 }

@@ -13,8 +13,8 @@ export class SnackbarService {
       this.snackbar.open(message, '', {
         horizontalPosition: 'center',
         verticalPosition: 'top',
-        duration: 200,
-        panelClass: ['red-snackbar']
+        duration: 2000,
+        // panelClass: ['red-snackbar']
       });
     }
     else {
@@ -22,7 +22,7 @@ export class SnackbarService {
         horizontalPosition: 'center',
         verticalPosition: 'top',
         duration: 200,
-        panelClass: ['green-snackbar']
+        // panelClass: ['green-snackbar']
       });
     }
   }

@@ -1,11 +1,29 @@
-.toolbar-row {
-    display: flex;
-    justify-content: center;
-    padding: 8px 0;
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: #fff;
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f5f5;
 }
+
+mat-toolbar {
+    background-color: #000000;
+    /* Use primary color */
+    color: white;
+
+    .title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    mat-icon {
+        color: white;
+    }
+}
+
 
 .dialog-content {
     padding: 24px;

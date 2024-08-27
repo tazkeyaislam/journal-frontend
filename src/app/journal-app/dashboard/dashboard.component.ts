@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ArticleDetailsComponent } from 'src/app/home/article-details/article-details.component';
 import { ArticleService } from 'src/app/services/article.service';
 import { CategoryService } from 'src/app/services/category.service';
@@ -14,10 +15,9 @@ import { GlobalConstants } from 'src/app/shared/global-constants';
 })
 export class DashboardComponent {
 
-
   responseMessage: any;
   articles: any[] = [];
-  searchText: string = ' ';
+  searchText: string = '';
   categories: any[] = [];
   selectedCategoryId: number | null = null;
   isLoading: boolean = true;  // Track loading state
@@ -28,6 +28,7 @@ export class DashboardComponent {
     private dialog: MatDialog,
     private router: Router,
     private userService: UserService,
+    private ngxService: NgxUiLoaderService,
     private categoryService: CategoryService) {
     this.tableData();
     this.fetchCategories();
@@ -46,12 +47,13 @@ export class DashboardComponent {
   }
 
   tableData() {
+    this.ngxService.start();
     this.articleService.getPublicPublishedArticles().subscribe((response: any) => {
       this.articles = response;
       console.log('Articles:', this.articles); // Log to check the data
-      this.isLoading = false;  // End loading after data is fetched
+      this.ngxService.stop();
     }, (error: any) => {
-      this.isLoading = false;  // End loading after data is fetched
+      this.ngxService.stop()  // End loading after data is fetched
       console.log(error);
       if (error.error?.message) {
         this.responseMessage = error.error?.message;
@@ -98,9 +100,12 @@ export class DashboardComponent {
     }
   }
   fetchCategories() {
+    this.ngxService.start();
     this.categoryService.getAllCategory().subscribe((res: any) => {
       this.categories = res;
+      this.ngxService.stop();
     }, (error: any) => {
+      this.ngxService.stop();
       console.log(error);
       if (error.error?.message) {
         this.responseMessage = error.error?.message;

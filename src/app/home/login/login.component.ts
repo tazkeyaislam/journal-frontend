@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { SnackbarService } from 'src/app/services/snackbar.service';
 import { UserService } from 'src/app/services/user.service';
 import { GlobalConstants } from 'src/app/shared/global-constants';
 
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private userService: UserService,
-    private ngxService: NgxUiLoaderService
+    private ngxService: NgxUiLoaderService,
+    private snackbarService: SnackbarService
   ) { }
 
   ngOnInit(): void {
@@ -50,8 +52,11 @@ export class LoginComponent implements OnInit {
         console.log(error);
         this.ngxService.stop();
         if (error.error?.message) {
+          this.responseMessage = error.error?.message || GlobalConstants.genericError;
+        } else {
           this.responseMessage = GlobalConstants.genericError;
         }
+        this.snackbarService.openSnackBar(this.responseMessage, 'error');
       })
   }
 

@@ -8,6 +8,7 @@ import { ConfirmationComponent } from '../dialog/confirmation/confirmation.compo
 import { ArticlesComponent } from '../dialog/articles/articles.component';
 import { ViewArticleComponent } from '../dialog/view-article/view-article.component';
 import { AuthService } from 'src/app/services/auth.service';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-manage-article',
@@ -25,7 +26,8 @@ export class ManageArticleComponent implements OnInit {
     private dialog: MatDialog,
     private router: Router,
     private articleService: ArticleService,
-    public authService: AuthService
+    public authService: AuthService,
+    private ngxService: NgxUiLoaderService
   ) { }
 
   ngOnInit(): void {
@@ -34,10 +36,13 @@ export class ManageArticleComponent implements OnInit {
   }
 
   tableData() {
+    this.ngxService.start();
     if (this.isAdmin) {
       this.articleService.getAdminPublishedArticles().subscribe((res: any) => {
         this.dataSource = new MatTableDataSource(res);
+        this.ngxService.stop();
       }, (error: any) => {
+        this.ngxService.stop();
         console.log(error);
         if (error.error?.message) {
           this.responseMessage = error.error?.message;
@@ -49,7 +54,9 @@ export class ManageArticleComponent implements OnInit {
     } else {
       this.articleService.getMyArticles().subscribe((res: any) => {
         this.dataSource = new MatTableDataSource(res);
+        this.ngxService.stop();
       }, (error: any) => {
+        this.ngxService.stop();
         console.log(error);
         if (error.error?.message) {
           this.responseMessage = error.error?.message;

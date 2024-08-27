@@ -6,6 +6,7 @@ import { GlobalConstants } from '../shared/global-constants';
 import { ArticleDetailsComponent } from './article-details/article-details.component';
 import { UserService } from '../services/user.service';
 import { CategoryService } from '../services/category.service';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-home',
@@ -25,6 +26,7 @@ export class HomeComponent implements OnInit {
     private dialog: MatDialog,
     private router: Router,
     private userService: UserService,
+    private ngxService: NgxUiLoaderService,
     private categoryService: CategoryService) {
     this.tableData();
     this.fetchCategories();
@@ -43,9 +45,12 @@ export class HomeComponent implements OnInit {
   }
 
   tableData() {
+    this.ngxService.start();
     this.articleService.getPublicPublishedArticles().subscribe((response: any) => {
       this.articles = response;
+      this.ngxService.stop();
     }, (error: any) => {
+      this.ngxService.stop();
       console.log(error);
       if (error.error?.message) {
         this.responseMessage = error.error?.message;
@@ -85,9 +90,12 @@ export class HomeComponent implements OnInit {
 
 
   fetchCategories() {
+    this.ngxService.start();
     this.categoryService.getAllCategory().subscribe((res: any) => {
       this.categories = res;
+      this.ngxService.stop();
     }, (error: any) => {
+      this.ngxService.stop();
       console.log(error);
       if (error.error?.message) {
         this.responseMessage = error.error?.message;

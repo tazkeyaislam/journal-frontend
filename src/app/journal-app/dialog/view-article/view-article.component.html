@@ -1,7 +1,10 @@
-<mat-toolbar color="primary">
-    <div class="toolbar-row">
-        <span>View Article</span>
-    </div>
+<mat-toolbar>
+    <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="title">View Article</div>
+        <button mat-icon-button mat-dialog-close aria-label="Close">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-toolbar-row>
 </mat-toolbar>
 
 <mat-dialog-content class="dialog-content">
@@ -13,8 +16,4 @@
     <mat-divider></mat-divider>
     <div class="article-content">{{ article?.content }}</div>
 </mat-dialog-content>
-
-<mat-dialog-actions align="end">
-    <button mat-raised-button color="accent" mat-dialog-close>Close</button>
-</mat-dialog-actions>
 
