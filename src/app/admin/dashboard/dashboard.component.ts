@@ -67,18 +67,13 @@ export class DashboardComponent {
   filteredItem(): any[] {
     const trimmedSearchText = this.searchText.trim().toLowerCase();
 
-    if (!trimmedSearchText) {
-      return this.articles; // Return all articles if search text is empty or only spaces
-    }
-
-    return this.articles.filter((item: { categoryId: number; categoryName: string; title: string }) =>
-      (!this.selectedCategoryId || item.categoryId === this.selectedCategoryId) &&
-      (item.title.toLowerCase().includes(trimmedSearchText) ||
-        item.categoryName.toLowerCase().includes(trimmedSearchText))
-    );
+    return this.articles.filter((item) => {
+      const matchesCategory = !this.selectedCategoryId || item.category?.id === this.selectedCategoryId;
+      const matchesSearchText = item.title?.toLowerCase().includes(trimmedSearchText) ||
+        item.category?.name?.toLowerCase().includes(trimmedSearchText);
+      return matchesCategory && matchesSearchText;
+    });
   }
-
-
 
   handleViewAction(article: any) {
     const dialogConfig = new MatDialogConfig();
@@ -131,5 +126,6 @@ export class DashboardComponent {
     const color = `hsl(${hash % 360}, 60%, 80%)`;
     return color;
   }
+
 }
 

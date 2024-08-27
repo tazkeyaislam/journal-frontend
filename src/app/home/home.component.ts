@@ -59,11 +59,14 @@ export class HomeComponent implements OnInit {
   }
 
   filteredItem(): any[] {
-    return this.articles.filter((item: { categoryId: number; categoryName: string; title: string }) =>
-      (!this.selectedCategoryId || item.categoryId === this.selectedCategoryId) && // Filter by selected category
-      (item.title.toLowerCase().includes(this.searchText.toLowerCase()) ||
-        item.categoryName.toLowerCase().includes(this.searchText.toLowerCase()))
-    );
+    const trimmedSearchText = this.searchText.trim().toLowerCase();
+
+    return this.articles.filter((item) => {
+      const matchesCategory = !this.selectedCategoryId || item.category?.id === this.selectedCategoryId;
+      const matchesSearchText = item.title?.toLowerCase().includes(trimmedSearchText) ||
+        item.category?.name?.toLowerCase().includes(trimmedSearchText);
+      return matchesCategory && matchesSearchText;
+    });
   }
 
 

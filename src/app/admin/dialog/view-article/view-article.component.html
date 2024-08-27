@@ -1,21 +1,20 @@
-<mat-toolbar>
+<mat-toolbar color="primary">
     <div class="toolbar-row">
         <span>View Article</span>
     </div>
 </mat-toolbar>
 
 <mat-dialog-content class="dialog-content">
-    <div>
-        Title: {{ article?.title }}
-        <br>
-        Category: {{ article?.categoryName }}
-        <br>
-        Status: {{ article?.status }}
+    <div class="article-info">
+        <div><strong>Title:</strong> {{ article?.title }}</div>
+        <div><strong>Category:</strong> {{ article?.category?.name }}</div>
+        <div><strong>Status:</strong> {{ article?.status }}</div>
     </div>
     <mat-divider></mat-divider>
-    <div>{{ article?.content }}</div>
+    <div class="article-content">{{ article?.content }}</div>
 </mat-dialog-content>
 
-<mat-dialog-actions align="center">
-    <button mat-raised-button mat-dialog-close>Close</button>
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="accent" mat-dialog-close>Close</button>
 </mat-dialog-actions>
+

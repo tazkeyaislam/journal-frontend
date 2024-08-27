@@ -1,9 +1,7 @@
-<mat-toolbar>
-    <mat-toolbar-row fxLayout="row">
-        <div class="title">
-            {{articleDetails?.title}}
-        </div>
-        <button mat-icon-button mat-dialog-close>
+<mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="title">{{ articleDetails?.title }}</div>
+        <button mat-icon-button mat-dialog-close aria-label="Close">
             <mat-icon>close</mat-icon>
         </button>
     </mat-toolbar-row>
@@ -11,49 +9,56 @@
 
 <mat-dialog-content>
     <div class="date">
-        Published on {{articleDetails.publication_date | date:'dd MMM, yyyy'}}
+        Published on {{ articleDetails.publication_date | date:'dd MMM, yyyy' }}
     </div>
 
-    <div class="email">
+    <div class="email" *ngIf="articleDetails?.user.email">
         <app-avatar
-          [initials]="articleDetails.userEmail.charAt(0).toUpperCase()"
-          [backgroundColor]="getAvatarColor(articleDetails.userEmail)">
+            [initials]="articleDetails?.user.email.charAt(0).toUpperCase()"
+            [backgroundColor]="getAvatarColor(articleDetails?.user.email)">
         </app-avatar>
-        {{ articleDetails?.userEmail }}
-      </div>
-      {{ articleDetails.content }}
-        <!-- Like button section -->
-        <div class="like-section">
-            <button mat-icon-button (click)="toggleLike()">
-                <mat-icon>{{ isLiked ? 'favorite' : 'favorite_border' }}</mat-icon>
-            </button>
-            <span>{{ likeCount }} {{ likeCount === 1 ? 'Like' : 'Likes' }}</span>
-        </div>
-    <div>
-        <div class="comment">
-            <mat-form-field appearance="outline" style="width: 100%;">
-                <mat-label>Leave a comment</mat-label>
-                <textarea matInput [(ngModel)]="commentText"></textarea>
-            </mat-form-field>
-            <button  mat-raised-button (click)="submitComment()">Comment</button>
-        </div>
+        <span>{{ articleDetails?.user.email }}</span>
     </div>
-    <div *ngIf="comments.length > 0">
+
+    <div class="content">{{ articleDetails?.content }}</div>
+
+    <div class="like-section">
+        <button mat-icon-button (click)="toggleLike()" aria-label="Toggle Like">
+            <mat-icon>{{ isLiked ? 'favorite' : 'favorite_border' }}</mat-icon>
+        </button>
+        <span>{{ likeCount }} {{ likeCount === 1 ? 'Like' : 'Likes' }}</span>
+    </div>
+
+    <div class="comment-section">
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Leave a comment</mat-label>
+            <textarea matInput [(ngModel)]="commentText"></textarea>
+        </mat-form-field>
+        <button mat-raised-button mat-raised-button (click)="submitComment()">Comment</button>
+    </div>
+
+    <div *ngIf="comments.length > 0" class="comments">
         <h3>Comments</h3>
         <mat-divider></mat-divider>
-        <div *ngFor="let comment of comments">
-            <div class="email">
+        <div *ngFor="let comment of comments" class="comment">
+            <div class="comment-header">
                 <app-avatar
-                [initials]="comment.user_name.charAt(0).toUpperCase()"
-                [backgroundColor]="getAvatarColor(comment.user_name)">
-              </app-avatar>
-            <p><strong>{{comment.user_name}}</strong> [{{comment.comment_date | date:'dd MMM, yyyy'}}]</p>
-        </div>
-            <p>{{comment.comment_text}}</p>
+                    [initials]="comment.user.email.charAt(0).toUpperCase()"
+                    [backgroundColor]="getAvatarColor(comment.user.email)">
+                </app-avatar>
+            </div>
+            <div class="email-comment">
+                <p class="comment-user">
+                    <strong>{{ comment.user.name }}</strong> 
+                    <span class="comment-date">[{{ comment.comment_date | date:'dd MMM, yyyy' }}]</span>
+                </p>
+                <p>{{ comment.comment_text }}</p>
+            </div>
             <mat-divider></mat-divider>
         </div>
     </div>
-    <div *ngIf="comments.length === 0">
+
+    <div *ngIf="comments.length === 0" class="no-comments">
         <p>No comments yet. Be the first to comment!</p>
     </div>
 </mat-dialog-content>

@@ -47,10 +47,10 @@ export class ManageUsersComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  changeStatus(status: any, id: any) {
+  changeStatus(status: boolean, id: any) {
     let data = {
       id: id,
-      status: status.toString()
+      status: status ? 'active' : 'inactive'
     }
     this.userService.updateUserStatus(data).subscribe((response: any) => {
       this.responseMessage = response?.message;

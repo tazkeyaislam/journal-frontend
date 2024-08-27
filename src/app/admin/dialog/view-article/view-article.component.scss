@@ -1,9 +1,42 @@
-/* Add this CSS to your styles for similar layout behavior */
 .toolbar-row {
     display: flex;
-    justify-content: center; /* Center content within the toolbar */
+    justify-content: center;
+    padding: 8px 0;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #fff;
 }
 
 .dialog-content {
-    padding: 16px; /* Add padding for content inside the dialog */
+    padding: 24px;
+    /* Increase padding for better spacing */
+    font-size: 1rem;
+    /* Adjust font size for better readability */
+    line-height: 1.5;
+    /* Improve text readability */
+}
+
+.article-info {
+    margin-bottom: 16px;
+
+    /* Add space between article info and content */
+    >div {
+        margin-bottom: 8px;
+        /* Add space between each item */
+    }
+}
+
+.article-content {
+    margin-top: 16px;
+    /* Add space between the divider and the content */
+}
+
+mat-dialog-actions {
+    margin-top: 16px;
+
+    /* Space above the buttons */
+    button {
+        font-weight: bold;
+        /* Make the button text bold */
+    }
 }

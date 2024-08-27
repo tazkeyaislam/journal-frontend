@@ -1,4 +1,5 @@
-<mat-toolbar color="primary" class="mat-elevation-z8 toolbar">
+<div class="page-container">
+  <mat-toolbar color="primary" class="mat-elevation-z8 toolbar">
   <span class="toolbar-title">
     JOURNAL
     <button mat-icon-button [routerLink]="['/']"></button>
@@ -35,22 +36,22 @@
   </div>
 </div>
 
-  <div class="card-container">
-    <app-article-card *ngFor="let card of filteredItem()"
-    [title]="card.title"
-    [categoryName]="card.categoryName"
-    [publicationDate]="card.publication_date"
-    [userEmail]="card.userEmail"
-    [likeCount]="card.likeCount"
-    [commentCount]="card.commentCount"
-    [avatarColor]="getAvatarColor(card.userEmail)"
-    (cardClick)="handleViewAction(card)"
->
-</app-article-card>
-  </div>
+<div class="card-container">
+  <app-article-card *ngFor="let card of filteredItem()"
+    [title]="card?.title"
+    [categoryName]="card?.category?.name"
+    [publicationDate]="card?.publication_date"
+    [userEmail]="card?.user?.email"
+    [likeCount]="card?.likeCount"
+    [commentCount]="card?.commentCount"
+    [avatarColor]="getAvatarColor(card?.user?.email)"
+    (cardClick)="handleViewAction(card)">
+  </app-article-card>
+</div>
     <h1 *ngIf="filteredItem()?.length === 0">Nothing to show</h1>
 </div>
 
 <mat-toolbar class="footer">
   <div>All rights reserved © ArticleHub</div>
 </mat-toolbar>
+</div>
