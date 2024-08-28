@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { UserService } from 'src/app/services/user.service';
 import { GlobalConstants } from 'src/app/shared/global-constants';
 
@@ -19,7 +20,8 @@ export class ManageUsersComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private ngxService: NgxUiLoaderService
   ) { }
 
   ngOnInit(): void {
@@ -27,9 +29,12 @@ export class ManageUsersComponent implements OnInit {
   }
 
   tableData() {
+    this.ngxService.start();
     this.userService.getAllAppUser().subscribe((res: any) => {
       this.dataSource = new MatTableDataSource(res);
+      this.ngxService.stop();
     }, (error: any) => {
+      this.ngxService.stop();
       console.log(error);
       if (error.error?.message) {
         this.responseMessage = error.error?.message;

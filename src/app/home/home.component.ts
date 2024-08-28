@@ -75,20 +75,6 @@ export class HomeComponent implements OnInit {
   }
 
 
-  handleViewAction(values: any) {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = {
-      action: 'Edit',
-      data: values
-    };
-    dialogConfig.width = "850px";
-    const dialogRef = this.dialog.open(ArticleDetailsComponent, dialogConfig);
-    this.router.events.subscribe(() => {
-      dialogRef.close();
-    });
-  }
-
-
   fetchCategories() {
     this.ngxService.start();
     this.categoryService.getAllCategory().subscribe((res: any) => {

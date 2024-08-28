@@ -22,7 +22,7 @@ export class ArticleDetailsComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public dialogData: any,
     private dialogRef: MatDialogRef<ArticleDetailsComponent>,
     private articleService: ArticleService,
-    private authService: AuthService // Inject AuthService
+    private authService: AuthService,
   ) {
     this.articleDetails = this.dialogData.data;
   }
@@ -62,6 +62,7 @@ export class ArticleDetailsComponent implements OnInit {
       error: (error) => console.error('Error posting comment:', error)
     });
   }
+
   getAvatarColor(email: string): string {
     let hash = 0;
     for (let i = 0; i < email.length; i++) {
