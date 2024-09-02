@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Router } from '@angular/router';
 import { AuthService } from './auth.service';
 import { SnackbarService } from './snackbar.service';
-import { jwtDecode } from 'jwt-decode';
 import { GlobalConstants } from '../shared/global-constants';
 
 @Injectable({

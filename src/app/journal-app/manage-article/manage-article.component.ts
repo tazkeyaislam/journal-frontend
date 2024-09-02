@@ -155,6 +155,4 @@ export class ManageArticleComponent implements OnInit {
       // Snackbar for error display
     });
   }
-
-
 }

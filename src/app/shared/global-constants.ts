@@ -8,7 +8,6 @@ export class GlobalConstants {
 
     public static unauthorized: string = "You're not authorized to access this page";
 
-
     //Regex
     public static nameRegex: string = "[a-zA-Z0_9 ]*";
 

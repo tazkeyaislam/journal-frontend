@@ -6,7 +6,6 @@
   <div class="login-right">
     <form [formGroup]="formGroup" (ngSubmit)="handleSubmit()">
       <div fxFlex fxLayout="column">
-        <!-- Iterate over fields to generate form inputs -->
         <mat-form-field *ngFor="let field of fields" appearance="outline" fxFlex>
           <mat-label>{{ field.label }}</mat-label>
           <input 
@@ -23,8 +22,6 @@
             </ng-container>
           </mat-error>
         </mat-form-field>
-
-        <!-- Submit button -->
         <button 
           mat-raised-button 
           color="primary" 
@@ -32,8 +29,6 @@
           type="submit">
           {{ submitButtonText }}
         </button>
-
-        <!-- Link to alternate route -->
         <span>
           {{ alternateRoute.text }}
           <button 

@@ -12,9 +12,7 @@ import { Router } from '@angular/router';
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
-  constructor(
-    private router: Router
-  ) { }
+  constructor(private router: Router) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
@@ -34,9 +32,6 @@ export class TokenInterceptor implements HttpInterceptor {
 
           //if the status code is 401 (Unauthorized) or 403 (Forbidden)
           if ((err.status === 401 || err.status === 403) && !this.isAuthRequest(err.url)) {
-            // if (this.router.url === '/') {
-            // }
-            // else {
             localStorage.clear();
             this.router.navigate(['/']);
             // }
@@ -48,7 +43,6 @@ export class TokenInterceptor implements HttpInterceptor {
   }
 
   private isAuthRequest(url: string | null): boolean {
-    // Assuming your login and signup URLs contain 'login' and 'signup' in the path
     return url?.includes('/login') || url?.includes('/signup') || false;
   }
 }

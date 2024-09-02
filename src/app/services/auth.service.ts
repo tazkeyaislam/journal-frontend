@@ -38,10 +38,10 @@ export class AuthService {
     const payload = this.decodeToken();
     return payload ? payload.role : '';
   }
-
-  // Retrieve the user's email from the token
-  public getUserEmail(): string {
-    const payload = this.decodeToken();
-    return payload ? payload.email : '';
-  }
 }
+
+// Retrieve the user's email from the token
+// public getUserEmail(): string {
+//   const payload = this.decodeToken();
+//   return payload ? payload.email : '';
+// }

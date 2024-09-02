@@ -1,7 +1,6 @@
 <app-auth-form 
-[title]="'Exam Mastery Hub'" 
-[description]="'Unleash Your Academic Success with Exam Mastery Hubs Exam Excellence Platform'"
-  [formGroup]="loginForm"
+[title]="'Welcome to Journal.dev'"
+[formGroup]="loginForm"
   [fields]="[{ label: 'Email', type: 'text', formControlName: 'email', errorMessages: { required: 'This field is required', pattern: 'This field is invalid' } },
     { label: 'Password', type: 'password', formControlName: 'password', errorMessages: { required: 'This field is required' } }]"
   [submitButtonText]="'Login'"
