@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AdminRoutingModule } from './admin-routing.module';
+import { JournalRoutingModule } from './journal-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LayoutComponent } from './layout/layout.component';
 import { ConfirmationComponent } from './dialog/confirmation/confirmation.component';
@@ -37,7 +37,7 @@ import { ChangePasswordComponent } from './dialog/change-password/change-passwor
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule,
+    JournalRoutingModule,
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
@@ -45,4 +45,4 @@ import { ChangePasswordComponent } from './dialog/change-password/change-passwor
     SharedModule
   ]
 })
-export class AdminModule { }
+export class JournalModule { }

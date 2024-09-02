@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {
     path: 'journal',
-    loadChildren: () => import('./journal-app/admin.module').then(m => m.AdminModule),
+    loadChildren: () => import('./journal-app/journal.module').then(m => m.JournalModule),
     canActivate: [RouterGuardService],
     data: {
       expectedRole: ['admin', 'user']
