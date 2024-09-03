@@ -1,7 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
-import { jwtDecode } from 'jwt-decode';
 
 describe('AuthService', () => {
     let service: AuthService;
@@ -84,7 +83,8 @@ describe('AuthService', () => {
             spyOn(service, 'decodeToken').and.returnValue(fakeDecodedToken);
 
             const result = service.getUserRole();
-            expect(result).toBe(''); // Expect an empty string if role is undefined
+            expect(result).toBe('');
         });
     });
 });
+
