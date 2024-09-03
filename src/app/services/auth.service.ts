@@ -36,12 +36,13 @@ export class AuthService {
   // Retrieve the user role from the token
   public getUserRole(): string {
     const payload = this.decodeToken();
-    return payload ? payload.role : '';
+    return payload && payload.role ? payload.role : '';
   }
 
+
   // Retrieve the user's email from the token
-  public getUserEmail(): string {
-    const payload = this.decodeToken();
-    return payload ? payload.email : '';
-  }
+  // public getUserEmail(): string {
+  //   const payload = this.decodeToken();
+  //   return payload ? payload.email : '';
+  // }
 }
